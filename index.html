@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roshan — Developer Portfolio</title>
+  <meta name="description" content="Roshan — Full Stack Developer portfolio" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="progress-top" id="progressTop"></div>
+
+  <header class="nav-wrap" id="header">
+    <nav class="nav container">
+      <div class="brand">Roshan</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy glass">
+          <h1>Hi, I'm <span class="name">Roshan</span></h1>
+          <p class="typing"><span id="typed"></span><span class="cursor">|</span></p>
+          <p class="lead">I build modern, performant web experiences and love solving problems with elegant code.</p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn primary">See Projects</a>
+            <a href="#contact" class="btn ghost">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <div class="photo-glow glass">
+            <img src="images/profile.jpeg" alt="Roshan profile" class="profile-img">
+          </div>
+          <div class="subtle-anim" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about container glass-section">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>I'm Roshan — a passionate developer focused on building accessible and responsive web applications. I enjoy learning new technologies and improving user experiences through clean design and thoughtful engineering.</p>
+          <p>Currently learning React and Node.js while leveling up in system design and backend fundamentals.</p>
+        </div>
+        <div class="about-photo">
+          <div class="profile-border">
+            <img src="images/profile.jpeg" alt="Roshan" class="about-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="container skills-section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card glass">
+          <h3>HTML</h3>
+          <div class="progress" data-percent="95"><span></span></div>
+        </div>
+        <div class="skill-card glass">
+          <h3>CSS</h3>
+          <div class="progress" data-percent="90"><span></span></div>
+        </div>
+        <div class="skill-card glass">
+          <h3>JavaScript</h3>
+          <div class="progress" data-percent="85"><span></span></div>
+        </div>
+        <div class="skill-card glass">
+          <h3>React (learning)</h3>
+          <div class="progress" data-percent="60"><span></span></div>
+        </div>
+        <div class="skill-card glass">
+          <h3>Node.js (learning)</h3>
+          <div class="progress" data-percent="50"><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="container projects-section">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card glass">
+          <div class="card-body">
+            <h3>Project Alpha</h3>
+            <p class="muted">A responsive single-page app showcasing interactive UI components.</p>
+            <p class="stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn small" href="#">Live Demo</a>
+            <a class="btn ghost small" href="#">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card glass">
+          <div class="card-body">
+            <h3>Portfolio CMS</h3>
+            <p class="muted">A simple content-driven portfolio with a lightweight admin UI.</p>
+            <p class="stack"><strong>Tech:</strong> Node.js, Express, SQLite</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn small" href="#">Live Demo</a>
+            <a class="btn ghost small" href="#">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card glass">
+          <div class="card-body">
+            <h3>Taskly</h3>
+            <p class="muted">A minimal task tracker with offline-first features and local storage sync.</p>
+            <p class="stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn small" href="#">Live Demo</a>
+            <a class="btn ghost small" href="#">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact-section glass-section">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card glass">
+          <h3>Get in touch</h3>
+          <p>Email: <a id="emailLink" href="mailto:hirthickroshan2406@gmail.com">hirthickroshan2406@gmail.com</a></p>
+          <div class="socials">
+            <a href="https://github.com/hirthickroshan24/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="icon">
+              <i class="fab fa-github" aria-hidden="true" style="font-size:20px;"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/hirthick-roshan?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="icon">
+              <i class="fab fa-linkedin" aria-hidden="true" style="font-size:20px;"></i>
+            </a>
+            <a href="https://www.instagram.com/hirthick.rosh?igsh=bnJoOG9xOGJmMTdq" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="icon">
+              <i class="fab fa-instagram" aria-hidden="true" style="font-size:20px;"></i>
+            </a>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form glass" action="#">
+          <label><span>Name</span><input id="cfName" type="text" placeholder="Your name"></label>
+          <label><span>Email</span><input id="cfEmail" type="email" placeholder="you@email.com"></label>
+          <label><span>Message</span><textarea id="cfMessage" rows="4" placeholder="Say hi!"></textarea></label>
+          <div class="form-actions">
+            <button type="submit" class="btn primary" id="sendBtn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Roshan — Built with ❤️</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

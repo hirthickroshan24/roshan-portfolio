@@ -1,0 +1,20 @@
+# Render service manifest (template). Replace <repo-name> and <owner> when using
+# or use Render dashboard to create the service and set env vars.
+
+services:
+  - type: web
+    name: portfolio-backend
+    env: node
+    plan: free
+    # Optional: set 'repo' if you want Render to create the service from this repo
+    # repo: <owner>/<repo-name>
+    branch: main
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: EMAIL_USER
+        value: ''
+      - key: EMAIL_PASS
+        value: ''
+      - key: PORT
+        value: '5000'
