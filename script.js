@@ -30,6 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   typeLoop();
 
+  // Smooth nav link active state
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  function onScrollActive(){
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(s => {
+      const top = s.offsetTop;
+      const h = s.offsetHeight;
+      const id = s.getAttribute('id');
+      const link = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if (scrollPos >= top && scrollPos < top + h) {
+        if (link) link.classList.add('active');
+      } else { if (link) link.classList.remove('active'); }
+    });
+  }
+  window.addEventListener('scroll', onScrollActive);
+
   // Progress bars animation
   const progressEls = document.querySelectorAll('.progress');
   function animateProgress() {
@@ -53,15 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(el);
   });
 
-  // Run progress when skills section visible
+  // Run progress when skills section visible (once)
   const skillsSection = document.getElementById('skills');
   new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
       if (e.isIntersecting) { animateProgress(); obs.disconnect(); }
     });
-  }, {threshold: .2}).observe(skillsSection);
+  }, {threshold: .18}).observe(skillsSection);
 
-  // Smooth scroll for internal links (already via CSS but ensure offset for fixed nav)
+  // Smooth scroll for internal links (ensure offset for fixed nav) and close mobile menu
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (ev) => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -69,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ev.preventDefault();
         const top = target.getBoundingClientRect().top + window.scrollY - 70;
         window.scrollTo({top, behavior:'smooth'});
+        // close mobile nav if open
+        const navLinksEl = document.getElementById('navLinks');
+        if (navLinksEl && navLinksEl.classList.contains('show')) navLinksEl.classList.remove('show');
       }
     });
   });
@@ -76,7 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Back to top
   const backToTop = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) backToTop.style.display = 'flex'; else backToTop.style.display = 'none';
+    // show/hide back to top with fade
+    if (window.scrollY > 400) { backToTop.style.display = 'flex'; backToTop.style.opacity = '1'; } else { backToTop.style.opacity = '0'; setTimeout(()=>backToTop.style.display='none',250); }
     // navbar background change
     const navWrap = document.getElementById('header');
     if (window.scrollY > 40) navWrap.classList.add('scrolled'); else navWrap.classList.remove('scrolled');
@@ -84,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressTop = document.getElementById('progressTop');
     const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
     progressTop.style.width = Math.min(100, scrolled * 100) + '%';
+    onScrollActive();
   });
 
   backToTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
@@ -91,8 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Nav toggle for mobile
   const navToggle = document.getElementById('navToggle');
   navToggle.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    links.style.display = links.style.display === 'flex' ? '' : 'flex';
+    const links = document.getElementById('navLinks');
+    if (!links) return;
+    links.classList.toggle('show');
   });
 
   // Contact form -> POST to backend /send-email (falls back to mailto if server unavailable)
@@ -129,17 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
           alert(data.message || 'Message sent successfully!');
           contactForm.reset();
         } else {
-          // If server returned error, show message and fallback to mailto option
           let err = 'Failed to send message via server.';
           try { const j = await resp.json(); if (j && j.error) err = j.error; } catch(e){}
           alert(err + ' Opening your mail client as fallback.');
-          // fallback: open mail client so user can still send
           const subject = encodeURIComponent(`Portfolio message from ${name}`);
           const body = encodeURIComponent(`Reply-to: ${email}\n\n${message}`);
           window.location.href = `mailto:hirthickroshan2406@gmail.com?subject=${subject}&body=${body}`;
         }
       } catch (e) {
-        // Network or CORS error -> fallback to mailto
         alert('Could not reach email server. Opening your mail client as fallback.');
         const subject = encodeURIComponent(`Portfolio message from ${name}`);
         const body = encodeURIComponent(`Reply-to: ${email}\n\n${message}`);

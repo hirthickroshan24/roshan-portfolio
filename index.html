@@ -12,21 +12,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <div class="progress-top" id="progressTop"></div>
+  <div class="progress-top" id="progressTop" aria-hidden="true"></div>
 
   <header class="nav-wrap" id="header">
     <nav class="nav container">
       <div class="brand">Roshan</div>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
     </nav>
   </header>
 
@@ -71,23 +71,23 @@
       <h2>Skills</h2>
       <div class="skills-grid">
         <div class="skill-card glass">
-          <h3>HTML</h3>
+          <div class="skill-head"><i class="fab fa-html5"></i><h3>HTML</h3></div>
           <div class="progress" data-percent="95"><span></span></div>
         </div>
         <div class="skill-card glass">
-          <h3>CSS</h3>
+          <div class="skill-head"><i class="fab fa-css3-alt"></i><h3>CSS</h3></div>
           <div class="progress" data-percent="90"><span></span></div>
         </div>
         <div class="skill-card glass">
-          <h3>JavaScript</h3>
+          <div class="skill-head"><i class="fab fa-js"></i><h3>JavaScript</h3></div>
           <div class="progress" data-percent="85"><span></span></div>
         </div>
         <div class="skill-card glass">
-          <h3>React (learning)</h3>
+          <div class="skill-head"><i class="fab fa-react"></i><h3>React (learning)</h3></div>
           <div class="progress" data-percent="60"><span></span></div>
         </div>
         <div class="skill-card glass">
-          <h3>Node.js (learning)</h3>
+          <div class="skill-head"><i class="fab fa-node-js"></i><h3>Node.js (learning)</h3></div>
           <div class="progress" data-percent="50"><span></span></div>
         </div>
       </div>
@@ -97,38 +97,41 @@
       <h2>Projects</h2>
       <div class="projects-grid">
         <article class="project-card glass">
-          <div class="card-body">
+          <img src="https://picsum.photos/id/1011/1400/800" alt="Project Alpha screenshot" class="project-img">
+          <div class="project-overlay">
             <h3>Project Alpha</h3>
             <p class="muted">A responsive single-page app showcasing interactive UI components.</p>
             <p class="stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn small" href="#">Live Demo</a>
-            <a class="btn ghost small" href="#">GitHub</a>
+            <div class="card-actions">
+              <a class="btn small" href="#">Live Demo</a>
+              <a class="btn ghost small" href="#">GitHub</a>
+            </div>
           </div>
         </article>
 
         <article class="project-card glass">
-          <div class="card-body">
+          <img src="https://picsum.photos/id/1015/1400/800" alt="Portfolio CMS screenshot" class="project-img">
+          <div class="project-overlay">
             <h3>Portfolio CMS</h3>
             <p class="muted">A simple content-driven portfolio with a lightweight admin UI.</p>
             <p class="stack"><strong>Tech:</strong> Node.js, Express, SQLite</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn small" href="#">Live Demo</a>
-            <a class="btn ghost small" href="#">GitHub</a>
+            <div class="card-actions">
+              <a class="btn small" href="#">Live Demo</a>
+              <a class="btn ghost small" href="#">GitHub</a>
+            </div>
           </div>
         </article>
 
         <article class="project-card glass">
-          <div class="card-body">
+          <img src="https://picsum.photos/id/1003/1400/800" alt="Taskly screenshot" class="project-img">
+          <div class="project-overlay">
             <h3>Taskly</h3>
             <p class="muted">A minimal task tracker with offline-first features and local storage sync.</p>
             <p class="stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn small" href="#">Live Demo</a>
-            <a class="btn ghost small" href="#">GitHub</a>
+            <div class="card-actions">
+              <a class="btn small" href="#">Live Demo</a>
+              <a class="btn ghost small" href="#">GitHub</a>
+            </div>
           </div>
         </article>
       </div>
