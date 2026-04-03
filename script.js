@@ -1,5 +1,8 @@
 // Basic interactive behaviors: typing animation, progress bars, scroll reveal, nav toggle
 document.addEventListener('DOMContentLoaded', () => {
+  // API base URL for backend. Replace with your Railway service URL after deployment.
+  // Example: const API_BASE = 'https://roshan-portfolio-backend.up.railway.app';
+  const API_BASE = 'https://<your-railway-service>.up.railway.app';
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -141,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Try POST to backend
       try {
-        const resp = await fetch('http://localhost:5000/send-email', {
+        const resp = await fetch(`${API_BASE}/send-email`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, message })
