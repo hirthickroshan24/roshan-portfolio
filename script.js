@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Auto-detect environment: local dev vs production
   const API_BASE = window.location.hostname === 'localhost'
     ? 'http://localhost:5000'
-    : 'https://roshan-portfolio-backend.onrender.com';
+    : 'https://roshan-portfolio-sipn.onrender.com';
 
   // ── Year ──
   const yearEl = document.getElementById('year');
