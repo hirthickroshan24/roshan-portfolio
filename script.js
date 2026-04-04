@@ -5,7 +5,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ── API Base ──
-  const API_BASE = 'http://localhost:5000';
+  // Auto-detect environment: local dev vs production
+  const API_BASE = window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://roshan-portfolio-backend.onrender.com';
 
   // ── Year ──
   const yearEl = document.getElementById('year');
