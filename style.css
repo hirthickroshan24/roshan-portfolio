@@ -784,6 +784,8 @@ body::before {
   transition: var(--transition-spring);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .skill-pill:hover {
